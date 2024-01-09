@@ -1,0 +1,79 @@
+{% extends "base.html" %}{% block css %}
+<style>
+  input[type="file"] {
+    margin-left: -2px !important;
+
+    &::-webkit-file-upload-button {
+      display: none;
+    }
+    &::file-selector-button {
+      display: none;
+    }
+  }
+</style>
+{% endblock %} {% block title %}Sign Up{% endblock %} {% block content %}
+<form method="POST" enctype="multipart/form-data">
+  <h3 align="center">Sign Up</h3>
+  <div class="form-group mb-3">
+    <label for="email">Email Address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="Enter email"
+      required
+    />
+  </div>
+  <div class="form-group mb-3">
+    <label for="firstName">Full Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="fullName"
+      name="fullName"
+      placeholder="Enter full name"
+      required
+    />
+  </div>
+  <div class="form-group mb-3">
+    <label for="password1">Password (at least 7 characters)</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password1"
+      name="password1"
+      placeholder="Enter password"
+      required
+    />
+  </div>
+  <div class="form-group mb-3">
+    <label for="password2">Confirm Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password2"
+      name="password2"
+      placeholder="Confirm password"
+      required
+    />
+  </div>
+
+  <div class="input-group mt-5">
+    <label class="input-group-text" for="inputGroupFile01"
+      >Profile Picture</label
+    >
+
+    <input
+      type="file"
+      class="form-control"
+      id="inputGroupFile01"
+      name="profile_pic"
+      accept="image/png, image/gif, image/jpeg"
+      required
+    />
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

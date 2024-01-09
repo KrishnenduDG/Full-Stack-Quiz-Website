@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block title %}Quiz page{% endblock %} 
+
+
+{% block content %}
+<!-- Quiz Area -->
+<div class="container mt-4">
+    <div class="d-flex justify-content-between">
+    <h2>Quiz Questions</h2>
+  
+    <div class="d-flex justify-content-between align-items-center">
+      <span style="color: #28a745; margin-right: 10px;" id="correct-label"></span>
+      <span style="color: #dc3545; margin-left: 10px;" id="incorrect-label"></span>
+    </div>
+</div>
+  
+    <form id="quiz-form" style="display: none;">
+      <!-- Question 1 -->
+      <div class="card mt-0">
+        <div class="card-body">
+          <p class="card-text" id="quiz-question"></p>
+          <div class="custom-control custom-radio options">
+            <input type="radio" id="q1Option1" name="q1" class="custom-control-input">
+            <label class="custom-control-label quiz-options" for="q1Option1"></label>
+          </div>
+          <div class="custom-control custom-radio options">
+            <input type="radio" id="q1Option2" name="q1" class="custom-control-input">
+            <label class="custom-control-label quiz-options" for="q1Option2" class="quiz-options"></label>
+          </div>
+          <div class="custom-control custom-radio options">
+            <input type="radio" id="q1Option3" name="q1" class="custom-control-input">
+            <label class="custom-control-label quiz-options" for="q1Option3" class="quiz-options"></label>
+          </div>
+          <div class="custom-control custom-radio options">
+            <input type="radio" id="q1Option4" name="q1" class="custom-control-input">
+            <label class="custom-control-label quiz-options" for="q1Option4" class="quiz-options"></label>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Add more questions as needed -->
+  
+      <button type="submit" class="btn btn-primary mt-3" id="submit" style="cursor: pointer;">Submit</button>
+    </form>
+  </div>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static',filename="js/quiz.js") }}"></script>
+{% endblock %} 

@@ -1,0 +1,93 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block css %}
+<style>
+  body {
+    background-color: #f8f9fa;
+  }
+
+  .result-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    color: #007bff;
+  }
+
+  .result {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  #correct {
+    color: #28a745;
+    font-weight: bold;
+  }
+
+  #incorrect {
+    color: #dc3545;
+    font-weight: bold;
+  }
+
+  .retake-btn {
+    margin-top: 20px;
+  }
+</style>
+
+{% endblock %} {% block content %}
+<div class="container result-container">
+  <h2 class="text-center">Quiz Result</h2>
+
+  <div class="result text-center" style="display: none">
+    <p id="question-count"></p>
+    <div style="display: flex; justify-content: center">
+      <p id="correct" style="margin-right: 3%"></p>
+      <p id="incorrect"></p>
+    </div>
+    <p id="time" style="font-weight: bold"></p>
+  </div>
+
+  <div class="text-center">
+    <button
+      type="button"
+      class="btn btn-primary retake-btn"
+      onclick="location.replace('/quiz')"
+    >
+      Retake Quiz
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-success retake-btn"
+      onclick="location.replace('/profile')"
+    >
+      Go to Profile
+    </button>
+  </div>
+</div>
+{% endblock %} {% block javascript %}
+<script>
+  // Constant Declarations
+  const correctField = document.getElementById("correct");
+  const incorrectField = document.getElementById("incorrect");
+  const questionCountField = document.getElementById("question-count");
+  const timeField = document.getElementById("time");
+  const resultContainer = document.getElementsByClassName("result")[0];
+
+  // On Load, we fetch the result from cache and render
+  window.addEventListener("load", () => {
+    const stats = JSON.parse(localStorage.getItem("result"));
+    const quizzes = JSON.parse(localStorage.getItem("quizObj"));
+
+    questionCountField.innerText = `Total Questions: ${quizzes.length}`;
+    correctField.innerText = `✔ ${stats.correct}`;
+    incorrectField.innerText = `✘ ${stats.incorrect}`;
+    time.innerText = `⏲ Time: ${stats.time / 1000}s`;
+
+    resultContainer.style.display = "block";
+  });
+</script>
+{% endblock %}
